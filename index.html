@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de Nómina Colombia 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f5fb;--card:#fff;--ink:#0f172a;--mut:#64748b;--line:#e5e9f2;--acc:#4f46e5;--acc2:#06b6d4;--ok:#059669;--bad:#dc2626;--warn:#b45309;--warnbg:#fef3c7;--soft:#eef2ff;--shadow:0 10px 30px -12px rgba(30,41,90,.18);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--card:#141b30;--ink:#e8ecf7;--mut:#98a2b8;--line:#232c47;--acc:#818cf8;--acc2:#22d3ee;--ok:#34d399;--bad:#f87171;--warn:#fbbf24;--warnbg:#3a2f12;--soft:#1b2342;--shadow:0 10px 30px -12px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1020;--card:#141b30;--ink:#e8ecf7;--mut:#98a2b8;--line:#232c47;--acc:#818cf8;--acc2:#22d3ee;--ok:#34d399;--bad:#f87171;--warn:#fbbf24;--warnbg:#3a2f12;--soft:#1b2342;--shadow:0 10px 30px -12px rgba(0,0,0,.6);color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(120deg,#312e81,#4f46e5 55%,#0891b2);color:#fff;padding:34px 20px 90px}
+.wrap{max-width:1120px;margin:0 auto}
+.hero h1{margin:0 0 6px;font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.02em}
+.hero p{margin:0;opacity:.85;max-width:640px}
+.badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:600;margin-bottom:12px}
+main{max-width:1120px;margin:-62px auto 40px;padding:0 16px;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:860px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:0 0 14px;font-weight:700}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+input[type=text],input[type=date],input[type=month],input[type=number],select{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink);font:inherit;font-size:15px;outline:none;transition:.15s}
+input:focus,select:focus{border-color:var(--acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 18%,transparent)}
+.money{position:relative}.money span{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--mut);font-weight:600}.money input{padding-left:28px;font-weight:600;font-size:17px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;margin-top:12px;cursor:pointer;background:var(--bg)}
+.chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--acc)}
+.chk:has(input:disabled){opacity:.55;cursor:not-allowed;background:var(--soft)}
+.chk b{display:block;font-size:14px;font-weight:600}.chk small{color:var(--mut);font-size:12px}
+details{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--acc)}
+.alert{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--warnbg);color:var(--warn);font-size:13px;font-weight:500}
+.alert:empty{display:none}
+.net{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.net small{opacity:.85;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+.net .big{font-size:clamp(32px,6vw,46px);font-weight:800;letter-spacing:-.02em;margin:4px 0}
+.net .sub{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;opacity:.95}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+.line{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.line:last-child{border:0}.line span:first-child{color:var(--mut)}.line b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.line em{font-style:normal;font-size:11px;color:var(--mut);margin-left:6px;background:var(--soft);padding:1px 7px;border-radius:99px}
+.tot{font-weight:700}.tot span:first-child{color:var(--ink)}
+.neg b{color:var(--bad)}.pos b{color:var(--ok)}
+.exo{color:var(--ok);font-weight:600}
+button{font:inherit;font-weight:600;border:0;border-radius:11px;padding:11px 18px;cursor:pointer;background:var(--acc);color:#fff}
+button.ghost{background:var(--soft);color:var(--acc)}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.note{font-size:12px;color:var(--mut);margin-top:14px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:0 16px 30px;max-width:760px;margin:0 auto}
+@media print{.hero{padding:14px;background:#312e81}main{margin-top:10px;display:block}.card:first-child,.actions,details{display:none}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<span class="badge">Legislación laboral colombiana · 2026</span>
+<h1>Calculadora de Nómina Mensual</h1>
+<p>Liquida salario, deducciones del empleado, aportes a seguridad social y parafiscales del empleador, con exoneración del art. 114-1 del Estatuto Tributario.</p>
+</div></header>
+
+<main>
+<section class="card" aria-label="Datos de entrada">
+<h2>Datos del empleado</h2>
+<label for="sal">Salario mensual básico</label>
+<div class="money"><span>$</span><input type="text" id="sal" inputmode="numeric" value="2.500.000" autocomplete="off"></div>
+<label for="mes">Mes a liquidar</label>
+<input type="month" id="mes">
+<label class="chk" for="aux"><input type="checkbox" id="aux" checked><div><b>Auxilio de transporte</b><small>Aplica si el salario es hasta 2 SMMLV (Ley 15 de 1959)</small></div></label>
+<label for="ns">Ingresos no prestacionales (bonos, auxilios)</label>
+<div class="money"><span>$</span><input type="text" id="ns" inputmode="numeric" placeholder="0" autocomplete="off"></div>
+
+<h2 style="margin-top:22px">Vacaciones (opcional)</h2>
+<div class="row2"><div><label for="vi">Inicio</label><input type="date" id="vi"></div><div><label for="vf">Fin</label><input type="date" id="vf"></div></div>
+
+<h2 style="margin-top:22px">Incapacidades (opcional)</h2>
+<label for="inctipo">Tipo</label>
+<select id="inctipo"><option value="gen">Enfermedad general</option><option value="lab">Accidente o enfermedad laboral</option><option value="lic">Licencia de maternidad / paternidad</option></select>
+<div class="row2"><div><label for="inc">Días en este mes</label><input type="number" id="inc" min="0" max="30" value="0"></div><div><label for="incprev">Días previos acumulados</label><input type="number" id="incprev" min="0" max="540" value="0"></div></div>
+
+<h2 style="margin-top:22px">Empresa</h2>
+<label for="arl">Nivel de riesgo ARL</label>
+<select id="arl">
+<option value="0.00522">Clase I · 0,522% (oficina, administrativo)</option>
+<option value="0.01044">Clase II · 1,044%</option>
+<option value="0.02436">Clase III · 2,436%</option>
+<option value="0.0435">Clase IV · 4,350%</option>
+<option value="0.0696">Clase V · 6,960% (alto riesgo)</option>
+</select>
+<label class="chk" for="exo"><input type="checkbox" id="exo" checked><div><b>Empresa exonerada (art. 114-1 E.T.)</b><small>Exonera salud del empleador (8,5%), SENA e ICBF para empleados con menos de 10 SMMLV</small></div></label>
+<div class="alert" id="alert"></div>
+
+<details><summary>Parámetros legales (editables)</summary>
+<label for="smmlv">SMMLV 2026</label><div class="money"><span>$</span><input type="text" id="smmlv" inputmode="numeric" value="1.750.905"></div>
+<label for="auxv">Auxilio de transporte 2026</label><div class="money"><span>$</span><input type="text" id="auxv" inputmode="numeric" value="249.095"></div>
+<p class="note">Decretos 1469 y 1470 de 2025. Actualiza estos valores cada año.</p>
+</details>
+</section>
+
+<section aria-live="polite">
+<div class="net">
+<small>Neto a pagar al empleado</small>
+<div class="big" id="neto">$0</div>
+<div class="sub"><span>Devengado: <b id="devT">$0</b></span><span>Deducciones: <b id="dedT">$0</b></span><span>Días trabajados: <b id="dTr">30</b></span><span>Días vacaciones: <b id="dVac">0</b></span><span>Días incapacidad: <b id="dInc">0</b></span></div>
+</div>
+
+<div class="grid">
+<div class="card"><h2>Devengado</h2><div id="devL"></div></div>
+<div class="card"><h2>Deducciones al empleado</h2><div id="dedL"></div></div>
+<div class="card"><h2>Seguridad social · empleador</h2><div id="ssL"></div></div>
+<div class="card"><h2>Parafiscales</h2><div id="pfL"></div></div>
+<div class="card full" id="incCard" hidden><h2>Incapacidad: quién paga cada día</h2><div id="incL"></div></div>
+<div class="card full"><h2>Resumen para la empresa</h2><div id="resL"></div>
+<details><summary>Provisión de prestaciones sociales (informativo)</summary><div id="prL" style="margin-top:8px"></div></details>
+<div class="actions"><button onclick="window.print()">Imprimir / guardar PDF</button><button class="ghost" id="reset">Restablecer</button></div>
+<p class="note">Base de 30 días comerciales. Los aportes se aproximan al siguiente múltiplo de $100 como en la PILA. Aplica a salario ordinario; no cubre salario integral ni horas extras. Las incapacidades se pagan completas por nómina y la empresa recobra a la EPS, ARL o AFP la parte que les corresponde. Es una herramienta de apoyo: valida con tu contador antes de pagar.</p></div>
+</div>
+</section>
+</main>
+<footer>Fórmulas: salud 4% + pensión 4% empleado · salud 8,5%, pensión 12% y ARL empleador · CCF 4%, SENA 2%, ICBF 3% · Fondo de Solidaridad Pensional desde 4 SMMLV.</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const cop=n=>'$'+Math.round(n).toLocaleString('es-CO');
+const c100=n=>Math.ceil(Math.round(n)/100)*100;
+const num=el=>parseInt(String(el.value).replace(/\D/g,''))||0;
+const day=s=>{if(!s)return null;const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const line=(l,v,cls='',tag='')=>`<div class="line ${cls}"><span>${l}${tag?`<em>${tag}</em>`:''}</span><b>${v}</b></div>`;
+
+['sal','smmlv','auxv','ns'].forEach(id=>$(id).addEventListener('input',e=>{const n=num(e.target);e.target.value=n?n.toLocaleString('es-CO'):'';calc()}));
+let wantAux=true,wantExo=true;
+$('aux').addEventListener('input',e=>{wantAux=e.target.checked;calc()});
+$('exo').addEventListener('input',e=>{wantExo=e.target.checked;calc()});
+['mes','arl','vi','vf','ns','inctipo','inc','incprev'].forEach(id=>$(id).addEventListener('input',calc));
+const now=new Date();$('mes').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+$('reset').onclick=()=>{$('sal').value='2.500.000';$('ns').value='';$('vi').value='';$('vf').value='';$('inc').value=0;$('incprev').value=0;$('inctipo').selectedIndex=0;wantAux=wantExo=true;$('arl').selectedIndex=0;calc()};
+
+function fsp(r){ // Fondo de Solidaridad Pensional según IBC en SMMLV
+  if(r<4)return 0;if(r<16)return .01;if(r<17)return .012;if(r<18)return .014;if(r<19)return .016;if(r<20)return .018;return .02}
+
+function calc(){
+  const sal=num($('sal')),smmlv=num($('smmlv'))||1,auxV=num($('auxv')),ns=num($('ns'));
+  const [y,m]=($('mes').value||'2026-10').split('-').map(Number);
+  const ini=new Date(y,m-1,1),fin=new Date(y,m,0),msg=[];
+  // Bloqueo de opciones que no aplican
+  const auxOk=sal<=2*smmlv,exoOk=sal<10*smmlv;
+  $('aux').disabled=!auxOk;$('aux').checked=auxOk&&wantAux;
+  $('exo').disabled=!exoOk;$('exo').checked=exoOk&&wantExo;
+  if(!sal)msg.push('Ingresa el salario básico para calcular.');
+  else if(sal<smmlv)msg.push('El salario es inferior al SMMLV vigente ('+cop(smmlv)+').');
+  if(!auxOk)msg.push('Auxilio de transporte bloqueado: solo aplica a salarios de hasta 2 SMMLV ('+cop(2*smmlv)+').');
+  if(!exoOk)msg.push('Exoneración del art. 114-1 bloqueada: solo aplica a empleados que devengan menos de 10 SMMLV ('+cop(10*smmlv)+').');
+  if(sal>25*smmlv)msg.push('El IBC de seguridad social se limita a 25 SMMLV.');
+  // Vacaciones
+  let vac=0;const vi=day($('vi').value),vf=day($('vf').value);
+  $('vf').min=$('vi').value||'';
+  if(!!vi!==!!vf)msg.push('Completa las fechas de inicio y fin de las vacaciones.');
+  else if(vi&&vf){
+    if(vf<vi)msg.push('La fecha final de vacaciones es anterior a la inicial.');
+    else{const a=vi>ini?vi:ini,b=vf<fin?vf:fin;
+      if(b>=a)vac=Math.min(30,Math.round((b-a)/864e5)+1);
+      else msg.push('El periodo de vacaciones no se cruza con el mes liquidado.');
+      if(vi<ini||vf>fin)msg.push('Las vacaciones cruzan de mes: solo se liquidan los días de este mes.')}}
+  // Incapacidades
+  let inc=Math.max(0,parseInt($('inc').value)||0);
+  const prev=Math.max(0,parseInt($('incprev').value)||0),tipo=$('inctipo').value;
+  if(inc>30-vac){inc=30-vac;$('inc').value=inc;msg.push('Vacaciones + incapacidad no pueden superar 30 días: se ajustó la incapacidad a '+inc+'.')}
+  $('inc').max=30-vac;
+  if(tipo==='gen'&&prev+inc>540)msg.push('Superó 540 días de incapacidad: el pago posterior depende de la calificación de la AFP/EPS.');
+  const dT=30-vac-inc,vd=sal/30,piso=smmlv/30,salOrd=vd*dT,salVac=vd*vac;
+  let incEmp=0,incEnt=0;const tiers={};
+  for(let d=prev+1;d<=prev+inc;d++){
+    let pct=1,who='ent',lab;
+    if(tipo==='gen'){pct=d<=90?2/3:.5;
+      if(d<=2){who='emp';lab='Días 1-2 · 66,67% · Empleador'}
+      else if(d<=90)lab='Días 3-90 · 66,67% · EPS';
+      else if(d<=180)lab='Días 91-180 · 50% · EPS';
+      else lab='Día 181 en adelante · 50% · Fondo de pensiones'}
+    else if(tipo==='lab'){if(d===1){who='emp';lab='Día del accidente · 100% · Empleador'}else lab='Días siguientes · 100% · ARL'}
+    else lab='Licencia · 100% · EPS';
+    const v=sal?Math.max(vd*pct,piso):0; // nunca por debajo del SMMLV diario
+    if(who==='emp')incEmp+=v;else incEnt+=v;
+    (tiers[lab]=tiers[lab]||{n:0,v:0}).n++;tiers[lab].v+=v}
+  const incPay=incEmp+incEnt,incFull=vd*inc;
+  const aux=$('aux').checked?auxV/30*dT:0;
+  if($('aux').checked&&vac+inc>0)msg.push('El auxilio de transporte se paga solo por los días efectivamente trabajados ('+dT+').');
+  // Ingresos no salariales: regla del 40% (Ley 1393 de 2010, art. 30)
+  const exceso=Math.max(0,ns-.4*(salOrd+salVac+incPay+ns));
+  if(exceso>0)msg.push('Los pagos no salariales superan el 40% de la remuneración total: el exceso ('+cop(exceso)+') se suma al IBC de seguridad social (Ley 1393 de 2010, art. 30).');
+  // Bases de cotización
+  const fl=(b,d)=>sal>0?Math.max(b,piso*d):0,cap=x=>Math.min(x,25*smmlv),dAct=dT+vac;
+  const ibcSal=cap(fl(salOrd+salVac+incPay+exceso,30));
+  const ibcPen=cap(fl(salOrd+salVac+incFull+exceso,30));
+  const ibcArl=dAct?cap(fl(salOrd+salVac+exceso,dAct)):0;
+  const bPf=dAct?fl(salOrd+salVac,dAct):0;
+  // Empleado
+  const sEmp=c100(ibcSal*.04),pEmp=c100(ibcPen*.04),fs=fsp(ibcPen/smmlv),fspV=c100(ibcPen*fs);
+  const ded=sEmp+pEmp+fspV,dev=salOrd+salVac+incPay+ns+aux,neto=dev-ded;
+  // Empleador
+  const exoOn=$('exo').checked&&exoOk;
+  const sEr=exoOn?0:c100(ibcSal*.085),pEr=c100(ibcPen*.12),arl=c100(ibcArl*parseFloat($('arl').value));
+  const ccf=c100(bPf*.04),sena=exoOn?0:c100(bPf*.02),icbf=exoOn?0:c100(bPf*.03);
+  const ss=sEr+pEr+arl,pf=ccf+sena+icbf;
+  // Provisiones
+  const bp=salOrd+salVac+incPay+aux,ces=bp*.0833,intc=ces*.12,pri=bp*.0833,vcp=(salOrd+salVac)*.0417,prov=ces+intc+pri+vcp;
+  const costo=dev+ss+pf+prov-incEnt,pila=ded+ss+pf;
+
+  $('alert').innerHTML=msg.map(t=>'⚠ '+t).join('<br>');
+  $('neto').textContent=cop(neto);$('devT').textContent=cop(dev);$('dedT').textContent=cop(ded);
+  $('dTr').textContent=dT;$('dVac').textContent=vac;$('dInc').textContent=inc;
+  $('devL').innerHTML=line(`Salario (${dT} días)`,cop(salOrd))+line(`Vacaciones (${vac} días)`,cop(salVac))+line(`Incapacidad (${inc} días)`,cop(incPay))+line('Ingresos no prestacionales',cop(ns))+line('Auxilio de transporte',cop(aux))+line('Total devengado',cop(dev),'tot');
+  $('dedL').innerHTML=line('Salud','-'+cop(sEmp),'neg','4%')+line('Pensión','-'+cop(pEmp),'neg','4%')+line('Fondo solidaridad pensional','-'+cop(fspV),'neg',(fs*100).toFixed(1).replace('.',',')+'%')+line('Total deducciones','-'+cop(ded),'tot neg')+line('IBC salud',cop(ibcSal))+line('IBC pensión',cop(ibcPen));
+  const ex='<b class="exo">Exonerado</b>';
+  $('ssL').innerHTML=`<div class="line"><span>Salud<em>8,5%</em></span>${exoOn?ex:'<b>'+cop(sEr)+'</b>'}</div>`+line('Pensión',cop(pEr),'','12%')+line('ARL',cop(arl),'',(parseFloat($('arl').value)*100).toFixed(3).replace('.',',')+'%')+line('Total seguridad social',cop(ss),'tot');
+  $('pfL').innerHTML=line('CCF (caja de compensación)',cop(ccf),'','4%')+`<div class="line"><span>SENA<em>2%</em></span>${exoOn?ex:'<b>'+cop(sena)+'</b>'}</div>`+`<div class="line"><span>ICBF<em>3%</em></span>${exoOn?ex:'<b>'+cop(icbf)+'</b>'}</div>`+line('Total parafiscales',cop(pf),'tot');
+  $('incCard').hidden=!inc;
+  $('incL').innerHTML=Object.entries(tiers).map(([l,t])=>line(`${l} (${t.n} d)`,cop(t.v))).join('')+line('Pagado con recursos de la empresa',cop(incEmp))+line('Recobrable a EPS / ARL / AFP',cop(incEnt),'pos')+line('Total incapacidad',cop(incPay),'tot')+'<p class="note">Cada día se paga como mínimo al valor del SMMLV diario. Las cotizaciones de parafiscales y ARL no se causan sobre los días de incapacidad.</p>';
+  $('resL').innerHTML=line('Pago neto al empleado',cop(neto),'pos')+line('Total planilla PILA (empleado + empleador)',cop(pila))+line('Aportes del empleador (seguridad social + parafiscales)',cop(ss+pf))+(incEnt?line('Incapacidad recobrable a EPS / ARL / AFP',cop(incEnt),'pos'):'')+line('Costo total mensual para la empresa'+(incEnt?' (neto de recobros)':''),cop(costo),'tot');
+  $('prL').innerHTML=line('Cesantías',cop(ces),'','8,33%')+line('Intereses sobre cesantías',cop(intc),'','12% anual')+line('Prima de servicios',cop(pri),'','8,33%')+line('Vacaciones',cop(vcp),'','4,17%')+line('Total provisiones',cop(prov),'tot');
+}
+calc();
+</script>
+</body>
+</html>
